@@ -24,7 +24,7 @@ RUN yum install -y epel-release && \
     yum install -y --setopt=tsflags=nodocs nginx && \
     yum clean all
 
-# Change the default port for nginx 
+# Change the default port for nginx
 # Required if you plan on running images as a non-root user).
 RUN sed -i 's/80/8080/' /etc/nginx/nginx.conf
 RUN sed -i 's/user nginx;//' /etc/nginx/nginx.conf
@@ -46,4 +46,5 @@ EXPOSE 8080
 
 # Modify the usage script in your application dir to inform the user how to run
 # this image.
-CMD ["/usr/libexec/s2i/usage"]
+CMD ["/bin/bash"]
+# CMD ["/usr/libexec/s2i/usage"]
